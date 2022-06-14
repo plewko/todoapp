@@ -3,7 +3,7 @@ import "./Button.css";
 
 export interface TextInputProps {
   text: string;
-  buttontype: "submit" | "reset";
+  buttontype?: "submit" | "reset";
   onClick?: () => void;
 }
 

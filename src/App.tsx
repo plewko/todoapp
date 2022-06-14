@@ -5,9 +5,9 @@ import { Task } from "./types";
 
 function App(): JSX.Element {
   const dummyTasks = [
-    { id: 1, isDone: false, taskText: "pierwszy dummy task" },
-    { id: 2, isDone: true, taskText: "zrobic apke to do" },
-    { id: 3, isDone: false, taskText: "umie w typescripty" },
+    { id: 1, isDone: true, taskText: "pierwszy dummy task" },
+    { id: 2, isDone: false, taskText: "zrobic apke to do" },
+    { id: 3, isDone: true, taskText: "umie w typescripty" },
   ];
 
   const [tasks, setTasks] = useState<Task[]>(dummyTasks);
@@ -17,12 +17,34 @@ function App(): JSX.Element {
     setTasks((prevState) => [...prevState, newTask]);
   };
 
+  const handleOnChecked = (taskId: number) => {
+    setTasks((prevState: Task[]) =>
+      prevState.map((task: Task) => {
+        return task.id === taskId
+          ? { ...task, isDone: !task.isDone }
+          : { ...task };
+      })
+    );
+  };
+
+  const handleOnRemove = (taskId: number) => {
+    setTasks((prevState) =>
+      prevState.filter((task: Task) => {
+        return task.id !== taskId;
+      })
+    );
+  };
+
   return (
     <div>
       <header>
         <h1>To Doo App</h1>
       </header>
-      <TaskList tasks={tasks} />
+      <TaskList
+        tasks={tasks}
+        onChecked={handleOnChecked}
+        onRemoved={handleOnRemove}
+      />
       <TaskAddForm onAdd={handleOnAdd} />
     </div>
   );
