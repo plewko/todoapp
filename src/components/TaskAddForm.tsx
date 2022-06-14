@@ -2,27 +2,36 @@ import React, { useState, ChangeEvent } from "react";
 import Button from "./Button/Button";
 import Input from "./Input/Input";
 
-const TaskAddForm = (): JSX.Element => {
+export interface TaskAddFormProps {
+  onAdd: (value: string) => void;
+}
+
+const TaskAddForm = (props: TaskAddFormProps): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleFormSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
-    console.log(event);
+    inputValue && props.onAdd(inputValue);
+    setInputValue("");
   };
   const InputValueOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(inputValue);
     setInputValue(event.target.value);
+  };
+
+  const OnClickClear = () => {
+    setInputValue("");
   };
 
   return (
     <form onSubmit={handleFormSubmit}>
       <Input
+        name="task"
         inputType="text"
         placeholder="Enter"
         value={inputValue}
         onChange={InputValueOnChange}
       />
-      <Button text="Clear" buttontype="reset" />
+      <Button text="Clear" buttontype="reset" onClick={OnClickClear} />
       <Button text="Add" buttontype="submit" />
     </form>
   );
