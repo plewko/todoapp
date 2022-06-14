@@ -35,6 +35,17 @@ function App(): JSX.Element {
     );
   };
 
+  const handleOnEdit = (taskId: number, editValue: string) => {
+    console.log(taskId, editValue);
+    setTasks((prevState: Task[]) =>
+      prevState.map((task: Task) => {
+        return task.id === taskId
+          ? { ...task, taskText: editValue }
+          : { ...task };
+      })
+    );
+  };
+
   return (
     <div>
       <header>
@@ -44,6 +55,7 @@ function App(): JSX.Element {
         tasks={tasks}
         onChecked={handleOnChecked}
         onRemoved={handleOnRemove}
+        onEdit={handleOnEdit}
       />
       <TaskAddForm onAdd={handleOnAdd} />
     </div>
