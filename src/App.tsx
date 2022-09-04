@@ -1,7 +1,16 @@
 import React, { useState } from "react";
+import {
+  StyledAppWrapper,
+  StyledHeader,
+  StyledMain,
+  StyledTittle,
+} from "./App.styled";
 import TaskAddForm from "./components/TaskAddForm";
 import TaskList from "./components/TaskList";
 import { Task } from "./types";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "./styles/Global";
+import { theme } from "./styles/Theme";
 
 function App(): JSX.Element {
   const dummyTasks = [
@@ -14,7 +23,7 @@ function App(): JSX.Element {
 
   const handleOnAdd = (inputValue: string): void => {
     const newTask = { id: Math.random(), isDone: false, taskText: inputValue };
-    setTasks((prevState) => [...prevState, newTask]);
+    setTasks((prevState) => [newTask, ...prevState]);
   };
 
   const handleOnChecked = (taskId: number) => {
@@ -47,18 +56,24 @@ function App(): JSX.Element {
   };
 
   return (
-    <div>
-      <header>
-        <h1>To Doo App</h1>
-      </header>
-      <TaskList
-        tasks={tasks}
-        onChecked={handleOnChecked}
-        onRemoved={handleOnRemove}
-        onEdit={handleOnEdit}
-      />
-      <TaskAddForm onAdd={handleOnAdd} />
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <StyledAppWrapper>
+        <StyledHeader>
+          <StyledTittle>To Do</StyledTittle>
+        </StyledHeader>
+        <StyledMain>
+          <TaskAddForm onAdd={handleOnAdd} />
+          <TaskList
+            tasks={tasks}
+            onChecked={handleOnChecked}
+            onRemoved={handleOnRemove}
+            onEdit={handleOnEdit}
+          />
+        </StyledMain>
+        <footer></footer>
+      </StyledAppWrapper>
+    </ThemeProvider>
   );
 }
 export default App;

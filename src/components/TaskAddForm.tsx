@@ -1,17 +1,18 @@
 import React, { useState, ChangeEvent } from "react";
 import Button from "./Button/Button";
 import Input from "./Input/Input";
+import { ButtonWrapper, StyledTaskAddForm } from "./TaskAddForm.styled";
 
 export interface TaskAddFormProps {
   onAdd: (value: string) => void;
 }
 
-const TaskAddForm = (props: TaskAddFormProps): JSX.Element => {
+const TaskAddForm = ({ onAdd }: TaskAddFormProps): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleFormSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
-    inputValue && props.onAdd(inputValue);
+    inputValue && onAdd(inputValue);
     setInputValue("");
   };
   const InputValueOnChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -23,17 +24,19 @@ const TaskAddForm = (props: TaskAddFormProps): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <StyledTaskAddForm onSubmit={handleFormSubmit}>
       <Input
         name="task"
         inputType="text"
-        placeholder="Enter"
+        placeholder="Type the task"
         value={inputValue}
         onChange={InputValueOnChange}
       />
-      <Button text="Clear" buttontype="reset" onClick={OnClickClear} />
-      <Button text="Add" buttontype="submit" />
-    </form>
+      <ButtonWrapper>
+        <Button text="Clear" buttontype="reset" onClick={OnClickClear} />
+        <Button text="Add" buttontype="submit" isPink />
+      </ButtonWrapper>
+    </StyledTaskAddForm>
   );
 };
 

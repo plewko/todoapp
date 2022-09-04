@@ -1,4 +1,5 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent } from "react";
+import { StyledInput } from "./Input.styled";
 
 export interface InputProps {
   inputType: string;
@@ -10,7 +11,7 @@ export interface InputProps {
 
 const Input = (props: InputProps): JSX.Element => {
   return (
-    <input
+    <StyledInput
       name={props.name}
       onChange={props.onChange}
       type={props.inputType}

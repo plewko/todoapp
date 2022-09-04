@@ -1,17 +1,24 @@
 import React from "react";
-import "./Button.css";
+import { StyledButton } from "./Button.styled";
+import "./Button.styled.tsx";
 
 export interface TextInputProps {
   text: string;
   buttontype?: "submit" | "reset";
+  isPink?: boolean;
   onClick?: () => void;
 }
 
-const Button = (props: TextInputProps): JSX.Element => {
+const Button = ({
+  text,
+  buttontype,
+  isPink,
+  onClick,
+}: TextInputProps): JSX.Element => {
   return (
-    <button type={props.buttontype} onClick={props.onClick}>
-      {props.text}
-    </button>
+    <StyledButton type={buttontype} onClick={onClick} isPink={isPink}>
+      {text}
+    </StyledButton>
   );
 };
 
