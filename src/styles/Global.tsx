@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 body {
+  font-size: 100%;
   background-color: hsl(0, 0%, 100%);
   color: hsl(0, 1%, 16%);
   font-family: monospace;

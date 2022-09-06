@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from "react";
-import { StyledInput } from "./Input.styled";
+import { StyledInput, StyledInputWrapper, StyledSpan } from "./Input.styled";
 
 export interface InputProps {
   inputType: string;
@@ -11,13 +11,17 @@ export interface InputProps {
 
 const Input = (props: InputProps): JSX.Element => {
   return (
-    <StyledInput
-      name={props.name}
-      onChange={props.onChange}
-      type={props.inputType}
-      value={props.value}
-      placeholder={props.placeholder}
-    />
+    <StyledInputWrapper>
+      <StyledInput
+        name={props.name}
+        onChange={props.onChange}
+        type={props.inputType}
+        value={props.value}
+        required
+        // placeholder={props.placeholder}
+      />
+      <StyledSpan>{props.placeholder}</StyledSpan>
+    </StyledInputWrapper>
   );
 };
 

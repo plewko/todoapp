@@ -42,7 +42,10 @@ export const TextButtonWrapper = styled.div`
 `;
 
 export const ButtonWrapper = styled.div(
-  ({ theme: { margins } }) => css`
+  ({ theme: { margins, gap } }) => css`
     margin: ${margins.medium};
+    display: flex;
+    align-items: center;
+    gap: ${gap.xsmall};
   `
 );

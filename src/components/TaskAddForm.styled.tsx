@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledTaskAddForm = styled.form`
   display: flex;
@@ -6,9 +6,13 @@ export const StyledTaskAddForm = styled.form`
   align-items: center;
 `;
 
-export const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 50%;
-  justify-content: space-evenly;
-`;
+export const ButtonWrapper = styled.div(
+  ({ theme: { gap, margins } }) => css`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: ${margins.medium};
+    gap: ${gap.xsmall};
+  `
+);

@@ -3,7 +3,6 @@ import { Task } from "../types";
 import Button from "./Button/Button";
 import Checkbox from "./Checkbox/Checkbox";
 import Input from "./Input/Input";
-import { StyledInput } from "./Input/Input.styled";
 import {
   TextButtonWrapper,
   CheckboxWrapper,
@@ -12,6 +11,7 @@ import {
   TaskText,
   ButtonWrapper,
 } from "./TaskList.styled";
+import { MdModeEditOutline, MdOutlineSave, MdDelete } from "react-icons/md";
 
 export interface TaskListProps {
   tasks: Task[];
@@ -41,12 +41,14 @@ const TaskList = ({
               inputType="text"
             />
             <Button
-              text="Save"
+              variant="primary"
               onClick={() => {
                 onEdit(task.id, editValue);
                 setEditId(null);
               }}
-            ></Button>
+            >
+              <MdOutlineSave />
+            </Button>
           </SingleTaskWrapper>
         ) : (
           <SingleTaskWrapper key={task.id}>
@@ -60,17 +62,18 @@ const TaskList = ({
               <TextButtonWrapper>
                 <TaskText isDone={task.isDone}> {task.taskText} </TaskText>
                 <ButtonWrapper>
+                  <Button variant="primary" onClick={() => onRemoved(task.id)}>
+                    <MdDelete size={18} />
+                  </Button>
                   <Button
-                    text="Remove"
-                    onClick={() => onRemoved(task.id)}
-                  ></Button>
-                  <Button
-                    text="Edit"
+                    variant="primary"
                     onClick={() => {
                       setEditValue(task.taskText);
                       setEditId(task.id);
                     }}
-                  ></Button>
+                  >
+                    <MdModeEditOutline size={18} />
+                  </Button>
                 </ButtonWrapper>
               </TextButtonWrapper>
             </>

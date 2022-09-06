@@ -33,8 +33,13 @@ const TaskAddForm = ({ onAdd }: TaskAddFormProps): JSX.Element => {
         onChange={InputValueOnChange}
       />
       <ButtonWrapper>
-        <Button text="Clear" buttontype="reset" onClick={OnClickClear} />
-        <Button text="Add" buttontype="submit" isPink />
+        <Button
+          variant="secondary"
+          text="Clear"
+          buttontype="reset"
+          onClick={OnClickClear}
+        />
+        <Button variant="primary" text="Add" buttontype="submit" isPink />
       </ButtonWrapper>
     </StyledTaskAddForm>
   );
