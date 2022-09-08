@@ -1,5 +1,10 @@
-import React, { ChangeEvent } from "react";
-import { StyledCheckbox } from "./Checkox.styled";
+import { ChangeEvent } from "react";
+import {
+  CheckboxIcoWrapper,
+  StyledCheckbox,
+  StyledCheckboxWrapper,
+} from "./Checkox.styled";
+import { MdCheck } from "react-icons/md";
 
 export interface CheckboxProps {
   checked: boolean;
@@ -7,15 +12,18 @@ export interface CheckboxProps {
   name?: string;
 }
 
-const Checkbox = (props: CheckboxProps): JSX.Element => {
+export const Checkbox = (props: CheckboxProps): JSX.Element => {
   return (
-    <StyledCheckbox
-      name={props.name}
-      onChange={props.onChange}
-      type="checkbox"
-      checked={props.checked}
-    />
+    <StyledCheckboxWrapper>
+      <StyledCheckbox
+        name={props.name}
+        onChange={props.onChange}
+        type="checkbox"
+        checked={props.checked}
+      />
+      <CheckboxIcoWrapper checked={props.checked}>
+        {props.checked && <MdCheck size={24} />}
+      </CheckboxIcoWrapper>
+    </StyledCheckboxWrapper>
   );
 };
-
-export default Checkbox;

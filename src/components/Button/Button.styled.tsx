@@ -48,7 +48,7 @@ export const StyledButton = styled.button<Pick<ButtonProps, "variant">>(
       color: ${colors.primaryButtonLightColor};
       border: 1px solid ${colors.primaryButtonLightColor};
       :hover {
-        background-color: ${colors.primaryButtonSuperLightColor};
+        background-color: ${colors.white};
         border: ${borders.small} solid ${colors.primaryButtonDarkColor};
         color: ${colors.primaryButtonDarkColor};
       }

@@ -12,7 +12,7 @@ export const ButtonWrapper = styled.div(
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    margin-bottom: ${margins.medium};
+    margin: ${margins.medium} 0;
     gap: ${gap.xsmall};
   `
 );

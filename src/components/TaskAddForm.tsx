@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
-import Button from "./Button/Button";
-import Input from "./Input/Input";
+import { Button } from "./Button/Button";
+import { Input } from "./Input/Input";
 import { ButtonWrapper, StyledTaskAddForm } from "./TaskAddForm.styled";
 
 export interface TaskAddFormProps {
@@ -28,7 +28,7 @@ const TaskAddForm = ({ onAdd }: TaskAddFormProps): JSX.Element => {
       <Input
         name="task"
         inputType="text"
-        placeholder="Type the task"
+        placeholder="Type task"
         value={inputValue}
         onChange={InputValueOnChange}
       />

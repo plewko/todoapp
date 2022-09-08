@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Task } from "../types";
-import Button from "./Button/Button";
-import Checkbox from "./Checkbox/Checkbox";
-import Input from "./Input/Input";
+import { Button } from "./Button/Button";
+import { Checkbox } from "./Checkbox/Checkbox";
+import { Input } from "./Input/Input";
 import {
   TextButtonWrapper,
   CheckboxWrapper,
@@ -10,6 +10,7 @@ import {
   StyledTaskList,
   TaskText,
   ButtonWrapper,
+  EditButtonWrapper,
 } from "./TaskList.styled";
 import { MdModeEditOutline, MdOutlineSave, MdDelete } from "react-icons/md";
 
@@ -34,21 +35,23 @@ const TaskList = ({
       {tasks.map((task: Task, index: number): JSX.Element => {
         return task.id === editId ? (
           <SingleTaskWrapper key={task.id}>
-            <Input
-              name="edit"
-              onChange={(event) => setEditValue(event.target.value)}
-              value={editValue}
-              inputType="text"
-            />
-            <Button
-              variant="primary"
-              onClick={() => {
-                onEdit(task.id, editValue);
-                setEditId(null);
-              }}
-            >
-              <MdOutlineSave />
-            </Button>
+            <EditButtonWrapper>
+              <Input
+                name="edit"
+                onChange={(event) => setEditValue(event.target.value)}
+                value={editValue}
+                inputType="text"
+              />
+              <Button
+                variant="primary"
+                onClick={() => {
+                  onEdit(task.id, editValue);
+                  setEditId(null);
+                }}
+              >
+                <MdOutlineSave size={18} />
+              </Button>
+            </EditButtonWrapper>
           </SingleTaskWrapper>
         ) : (
           <SingleTaskWrapper key={task.id}>

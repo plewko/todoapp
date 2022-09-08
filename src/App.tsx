@@ -11,6 +11,7 @@ import { Task } from "./types";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./styles/Global";
 import { theme } from "./styles/Theme";
+import { MdFactCheck } from "react-icons/md";
 
 function App(): JSX.Element {
   const dummyTasks = [
@@ -60,7 +61,10 @@ function App(): JSX.Element {
       <GlobalStyles />
       <StyledAppWrapper>
         <StyledHeader>
-          <StyledTittle>To Do</StyledTittle>
+          <StyledTittle>
+            to do app&nbsp;
+            <MdFactCheck />
+          </StyledTittle>
         </StyledHeader>
         <StyledMain>
           <TaskAddForm onAdd={handleOnAdd} />

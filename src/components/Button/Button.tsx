@@ -4,7 +4,7 @@ import "./Button.styled.tsx";
 
 export interface ButtonProps {
   text?: string;
-  ico?: JSX.Element; // icony???
+  ico?: JSX.Element;
   buttontype?: "submit" | "reset";
   isPink?: boolean;
   onClick?: () => void;
@@ -12,7 +12,7 @@ export interface ButtonProps {
   variant: "primary" | "secondary";
 }
 
-const Button = ({
+export const Button = ({
   text,
   ico,
   buttontype,
@@ -28,5 +28,3 @@ const Button = ({
     </StyledButton>
   );
 };
-
-export default Button;

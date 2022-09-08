@@ -1,6 +1,6 @@
 const Palette = {
   powderWhite: "#FFFDF9",
-  persianGreen: "#06B49A",
+  persianGreen: "#00c9a7",
   lightBlue: "#AFDBD2",
   onyx: "#36313D",
   pink: "pink",
@@ -16,6 +16,7 @@ export const theme = {
     primaryButtonSuperLightColor: Palette.violetSuperLight,
     primaryButtonLightColor: Palette.violetLight,
     primaryButtonDarkColor: Palette.violetDark,
+    secoundaryLightGreen: Palette.persianGreen,
     black: "black",
     background: Palette.white,
     white: "white",
