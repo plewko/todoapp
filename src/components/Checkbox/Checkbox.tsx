@@ -9,20 +9,14 @@ import { MdCheck } from "react-icons/md";
 export interface CheckboxProps {
   checked: boolean;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  name?: string;
 }
 
-export const Checkbox = (props: CheckboxProps): JSX.Element => {
+export const Checkbox = ({ checked, onChange }: CheckboxProps): JSX.Element => {
   return (
     <StyledCheckboxWrapper>
-      <StyledCheckbox
-        name={props.name}
-        onChange={props.onChange}
-        type="checkbox"
-        checked={props.checked}
-      />
-      <CheckboxIcoWrapper checked={props.checked}>
-        {props.checked && <MdCheck size={24} />}
+      <StyledCheckbox onChange={onChange} type="checkbox" checked={checked} />
+      <CheckboxIcoWrapper checked={checked}>
+        {checked && <MdCheck size={24} />}
       </CheckboxIcoWrapper>
     </StyledCheckboxWrapper>
   );

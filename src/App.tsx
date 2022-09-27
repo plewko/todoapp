@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   StyledAppWrapper,
   StyledHeader,
   StyledMain,
-  StyledTittle,
+  StyledTitle,
 } from "./App.styled";
 import TaskAddForm from "./components/TaskAddForm";
 import TaskList from "./components/TaskList";
@@ -14,13 +14,14 @@ import { theme } from "./styles/Theme";
 import { MdFactCheck } from "react-icons/md";
 
 function App(): JSX.Element {
-  const dummyTasks = [
-    { id: 1, isDone: true, taskText: "pierwszy dummy task" },
-    { id: 2, isDone: false, taskText: "zrobic apke to do" },
-    { id: 3, isDone: true, taskText: "umie w typescripty" },
+  const tasksData = [
+    { id: 1, isDone: true, taskText: "do touch typing for 15 minutes" },
+    { id: 2, isDone: false, taskText: "presentation for John" },
+    { id: 3, isDone: true, taskText: "go to the gym" },
+    { id: 4, isDone: false, taskText: "buy new headphones" },
   ];
 
-  const [tasks, setTasks] = useState<Task[]>(dummyTasks);
+  const [tasks, setTasks] = useState<Task[]>(tasksData);
 
   const handleOnAdd = (inputValue: string): void => {
     const newTask = { id: Math.random(), isDone: false, taskText: inputValue };
@@ -46,7 +47,6 @@ function App(): JSX.Element {
   };
 
   const handleOnEdit = (taskId: number, editValue: string) => {
-    console.log(taskId, editValue);
     setTasks((prevState: Task[]) =>
       prevState.map((task: Task) => {
         return task.id === taskId
@@ -61,10 +61,10 @@ function App(): JSX.Element {
       <GlobalStyles />
       <StyledAppWrapper>
         <StyledHeader>
-          <StyledTittle>
+          <StyledTitle>
             to do app&nbsp;
             <MdFactCheck />
-          </StyledTittle>
+          </StyledTitle>
         </StyledHeader>
         <StyledMain>
           <TaskAddForm onAdd={handleOnAdd} />
@@ -75,7 +75,6 @@ function App(): JSX.Element {
             onEdit={handleOnEdit}
           />
         </StyledMain>
-        <footer></footer>
       </StyledAppWrapper>
     </ThemeProvider>
   );

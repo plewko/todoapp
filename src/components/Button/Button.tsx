@@ -4,9 +4,7 @@ import "./Button.styled.tsx";
 
 export interface ButtonProps {
   text?: string;
-  ico?: JSX.Element;
-  buttontype?: "submit" | "reset";
-  isPink?: boolean;
+  buttonType?: "submit" | "reset";
   onClick?: () => void;
   children?: ReactElement;
   variant: "primary" | "secondary";
@@ -14,16 +12,14 @@ export interface ButtonProps {
 
 export const Button = ({
   text,
-  ico,
-  buttontype,
+  buttonType,
   variant,
   onClick,
   children,
 }: ButtonProps): JSX.Element => {
   return (
-    <StyledButton type={buttontype} onClick={onClick} variant={variant}>
+    <StyledButton type={buttonType} onClick={onClick} variant={variant}>
       {children}
-
       {text && text}
     </StyledButton>
   );

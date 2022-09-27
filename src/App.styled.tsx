@@ -21,19 +21,14 @@ export const StyledHeader = styled.header(
   `
 );
 
-export const StyledTittle = styled.h1(
+export const StyledTitle = styled.h1(
   ({ theme: { colors, paddings, fontSizes } }) => css`
-    color: ${colors.secoundaryLightGreen};
+    color: ${colors.secondaryLightGreen};
     padding-bottom: ${paddings.medium};
     font-size: ${fontSizes.medium};
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* :hover,
-    :focus {
-      text-decoration: line-through;
-    } */
   `
 );
 

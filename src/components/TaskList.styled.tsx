@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const StyledTaskList = styled.ul(
-  ({ theme }) => css`
+  () => css`
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -15,15 +15,15 @@ export const StyledTaskList = styled.ul(
 export const TaskText = styled.span<{ isDone: boolean }>(
   ({ isDone }) => css`
     text-decoration: ${isDone ? "line-through" : "none"};
-    overflow-wrap: break-word;
+    word-break: break-word;
   `
 );
 
 export const SingleTaskWrapper = styled.li(
-  ({ theme: { colors, heights } }) => css`
+  ({ theme: { colors } }) => css`
     max-width: 100%;
     background-color: ${colors.background};
-    color: ${colors.secoundaryLightGreen};
+    color: ${colors.secondaryLightGreen};
     width: 100%;
     display: flex;
     align-items: center;

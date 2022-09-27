@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useRef } from "react";
 import { StyledInput, StyledInputWrapper, StyledSpan } from "./Input.styled";
 
 export interface InputProps {
@@ -9,17 +9,32 @@ export interface InputProps {
   name: string;
 }
 
-export const Input = (props: InputProps): JSX.Element => {
+export const Input = ({
+  inputType,
+  name,
+  onChange,
+  placeholder,
+  value,
+}: InputProps): JSX.Element => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLElement>) => {
+    event.code === "Escape" && inputRef.current?.blur();
+  };
+
   return (
     <StyledInputWrapper>
       <StyledInput
-        name={props.name}
-        onChange={props.onChange}
-        type={props.inputType}
-        value={props.value}
+        name={name}
+        onChange={onChange}
+        onKeyPress={handleKeyPress}
+        onKeyDown={handleKeyPress}
+        type={inputType}
+        value={value}
         required
+        ref={inputRef}
       />
-      <StyledSpan>{props.placeholder}</StyledSpan>
+      <StyledSpan>{placeholder}</StyledSpan>
     </StyledInputWrapper>
   );
 };

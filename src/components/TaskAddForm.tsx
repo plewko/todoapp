@@ -15,7 +15,8 @@ const TaskAddForm = ({ onAdd }: TaskAddFormProps): JSX.Element => {
     inputValue && onAdd(inputValue);
     setInputValue("");
   };
-  const InputValueOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+
+  const inputValueOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
@@ -30,16 +31,16 @@ const TaskAddForm = ({ onAdd }: TaskAddFormProps): JSX.Element => {
         inputType="text"
         placeholder="Type task"
         value={inputValue}
-        onChange={InputValueOnChange}
+        onChange={inputValueOnChange}
       />
       <ButtonWrapper>
         <Button
           variant="secondary"
           text="Clear"
-          buttontype="reset"
+          buttonType="reset"
           onClick={OnClickClear}
         />
-        <Button variant="primary" text="Add" buttontype="submit" isPink />
+        <Button variant="primary" text="Add" buttonType="submit" />
       </ButtonWrapper>
     </StyledTaskAddForm>
   );
