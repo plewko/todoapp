@@ -1,4 +1,4 @@
-# to-do-app
+# to do app
 
 Simple to-do-app created with **React.js**, **TypeScript** and **Styled Components**.
 
