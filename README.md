@@ -1,6 +1,6 @@
 # to do app
 
-Simple to-do-app created with **React.js**, **TypeScript** and **Styled Components**.
+Simple to do app created with **React.js**, **TypeScript** and **Styled Components**.
 
 **Live demo**: _https://plewko.github.io/todoapp_
 
